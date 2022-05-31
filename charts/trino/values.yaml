@@ -113,6 +113,36 @@ additionalCatalogs: {}
 # Array of EnvVar (https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core)
 env: []
 
+envFrom: []
+  # - secretRef:
+  #     name: trino-secrets-manager
+
+ingress:
+  hostname: "bogus"
+  annotations: {}
+
+additionalSecrets: []
+  # - |
+  #   apiVersion: kubernetes-client.io/v1
+  #   kind: ExternalSecret
+  #   metadata:
+  #     name: trino-password-authentication
+  #   spec:
+  #     backendType: secretsManager
+  #     data:
+  #       - key: /dev/main/trino/password.db
+  #         name: password.db
+  # - |
+  #   apiVersion: kubernetes-client.io/v1
+  #   kind: ExternalSecret
+  #   metadata:
+  #     name: trino-secrets-manager
+  #   spec:
+  #     backendType: secretsManager
+  #     data:
+  #       - key: /dev/main/trino/db_password
+  #         name: DB_PASSWORD
+
 initContainers: {}
   # coordinator:
   #   - name: init-coordinator
