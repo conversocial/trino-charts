@@ -32,6 +32,8 @@ server:
     # Trino supports multiple authentication types: PASSWORD, CERTIFICATE, OAUTH2, JWT, KERBEROS
     # For more info: https://trino.io/docs/current/security/authentication-types.html
     authenticationType: ""
+    # If false, skip creation of vanilla Secret.
+    useDefaultAuthenticationSecret: true
     query:
       maxMemory: "4GB"
       maxMemoryPerNode: "1GB"
@@ -117,10 +119,13 @@ envFrom: []
   # - secretRef:
   #     name: trino-secrets-manager
 
+# Add simple Ingress when enabled == true
 ingress:
-  hostname: "bogus"
+  enabled: false
+  hostname: ""
   annotations: {}
 
+# Add more secrets. Can be useful for using external-secrets.io.
 additionalSecrets: []
   # - |
   #   apiVersion: kubernetes-client.io/v1
