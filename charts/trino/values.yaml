@@ -123,6 +123,7 @@ envFrom: []
 ingress:
   enabled: false
   hostname: ""
+  servicePort: 8080
   annotations: {}
 
 # Add more secrets. Can be useful for using external-secrets.io.
